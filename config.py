@@ -52,9 +52,9 @@ CONFIG = {
     'last_scrape_file': str(DATA_DIR / 'last_scrape.json'),
 
     # Javni URL/pot do HTML (za email). Primeri:
-    # 'https://TVOJ_USER.github.io/kzs'
+    # 'https://Kekec6.github.io/kzs-scraper'
     # 'http://intranet/kzs/html'
-    'html_public_base': '',
+    'html_public_base': 'https://Kekec6.github.io/kzs-scraper',
 
     # Smoke test pred celim scrapom
     'smoke_test_enabled': True,
