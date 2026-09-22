@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#eef1f6">
+<meta name="theme-color" content="#f2f3f5">
 <title>KZS – registracije</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,15 +11,15 @@
 <style>
 
 :root {
-  --bg: #eef1f6;
-  --bg-2: #e4e9f2;
-  --ink: #0b1020;
-  --muted: #5a6478;
-  --accent: #00c56c;
-  --accent-ink: #045c38;
-  --heat: #ff4d1a;
-  --surface: rgba(255,255,255,0.72);
-  --line: rgba(11,16,32,0.1);
+  --bg: #f2f3f5;
+  --bg-2: #eaecef;
+  --ink: #17181c;
+  --muted: #6b7280;
+  --accent: #3f4654;
+  --accent-ink: #17181c;
+  --heat: #b45309;
+  --surface: rgba(255,255,255,0.78);
+  --line: rgba(23,24,28,0.1);
   --radius: 0;
   --font-display: "Manrope", "Segoe UI", sans-serif;
   --font-body: "Manrope", "Segoe UI", sans-serif;
@@ -36,8 +36,8 @@ body {
   font-size: 1.05rem;
   line-height: 1.5;
   background:
-    radial-gradient(1200px 700px at 85% -10%, rgba(0,197,108,0.18), transparent 55%),
-    radial-gradient(900px 500px at -10% 30%, rgba(255,77,26,0.08), transparent 50%),
+    radial-gradient(1100px 640px at 88% -8%, rgba(63,70,84,0.08), transparent 55%),
+    radial-gradient(800px 480px at -8% 28%, rgba(180,83,9,0.05), transparent 50%),
     linear-gradient(165deg, var(--bg), var(--bg-2));
   background-attachment: fixed;
 }
@@ -47,17 +47,18 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.35;
+  opacity: 0.28;
   background-image:
-    linear-gradient(rgba(11,16,32,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(11,16,32,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(23,24,28,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,24,28,0.04) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse at 50% 20%, #000 20%, transparent 75%);
 }
-a { color: var(--accent-ink); text-underline-offset: 3px; }
-a:hover { color: var(--ink); }
-a.player, a.team, a.league-link {
-  font-weight: 650;
+a { color: var(--ink); text-underline-offset: 3px; }
+a:hover { color: var(--muted); }
+a.player, a.team, a.league-link, span.league-link {
+  font-weight: 600;
+  color: var(--ink);
   text-decoration: none;
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 1.5px;
@@ -120,14 +121,14 @@ a.player:hover, a.team:hover, a.league-link:hover {
   letter-spacing: 0.08em;
   padding: 0.22rem 0.45rem;
   margin-right: 0.4rem;
-  color: var(--accent-ink);
-  background: rgba(0,197,108,0.16);
-  border: 1px solid rgba(0,197,108,0.35);
+  color: var(--ink);
+  background: rgba(23,24,28,0.06);
+  border: 1px solid var(--line);
 }
 .badge[data-kind="prestop"] {
-  color: #9a2b0a;
-  background: rgba(255,77,26,0.14);
-  border-color: rgba(255,77,26,0.35);
+  color: #9a3412;
+  background: rgba(180,83,9,0.1);
+  border-color: rgba(180,83,9,0.28);
 }
 .btn {
   display: inline-flex;
@@ -149,7 +150,7 @@ a.player:hover, a.team:hover, a.league-link:hover {
   transform: translateY(-2px);
   background: var(--accent);
   border-color: var(--accent);
-  color: #042816;
+  color: #fff;
 }
 .btn-ghost {
   background: transparent;
@@ -186,9 +187,9 @@ a.player:hover, a.team:hover, a.league-link:hover {
 }
 .filters button:hover { color: var(--ink); border-color: var(--ink); }
 .filters button.active {
-  color: var(--accent-ink);
-  border-color: var(--accent);
-  background: rgba(0,197,108,0.14);
+  color: var(--ink);
+  border-color: var(--ink);
+  background: rgba(23,24,28,0.06);
 }
 
 /* —— reveal motion —— */
@@ -262,7 +263,7 @@ a.player:hover, a.team:hover, a.league-link:hover {
 }
 .court-accent {
   fill: none;
-  stroke: rgba(0,197,108,0.65);
+  stroke: rgba(63,70,84,0.45);
   stroke-width: 3;
   stroke-dasharray: 900;
   stroke-dashoffset: 900;
@@ -324,10 +325,10 @@ a.player:hover, a.team:hover, a.league-link:hover {
 .page-head h1 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  font-weight: 700;
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 .page-head .sub { margin: 0.55rem 0 0; color: var(--muted); max-width: 42ch; }
 .day-block {
@@ -387,16 +388,16 @@ a.player:hover, a.team:hover, a.league-link:hover {
   text-decoration: none;
   color: var(--ink);
 }
-.preview-strip .more-link:hover { color: var(--accent-ink); }
+.preview-strip .more-link:hover { color: var(--muted); }
 
 /* —— search page —— */
 .search-hero { padding: 1.75rem 0 1rem; }
 .search-hero h1 {
   margin: 0 0 1rem;
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 5vw, 3rem);
-  letter-spacing: -0.04em;
+  font-weight: 700;
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  letter-spacing: -0.03em;
 }
 .search-box input {
   width: 100%;
@@ -412,8 +413,8 @@ a.player:hover, a.team:hover, a.league-link:hover {
   transition: border-color 0.2s, box-shadow 0.25s;
 }
 .search-box input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,197,108,0.22);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(23,24,28,0.12);
 }
 .search-box .hint { margin: 0.5rem 0 0; color: var(--muted); font-size: 0.88rem; }
 #search-results {
@@ -462,22 +463,27 @@ details.league {
 details.league > summary {
   cursor: pointer;
   list-style: none;
-  padding: 0.85rem 0;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 750;
-  letter-spacing: -0.02em;
+  padding: 0.7rem 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 details.league > summary::-webkit-details-marker { display: none; }
 details.league > summary::before {
   content: "+";
   display: inline-block;
-  width: 1.2rem;
-  color: var(--accent-ink);
+  width: 1.1rem;
+  color: var(--muted);
   font-family: var(--font-body);
-  font-weight: 700;
+  font-weight: 500;
 }
 details.league[open] > summary::before { content: "–"; }
+a.league-link, span.league-link {
+  font-weight: 550;
+  color: inherit;
+}
 details.team {
   border-top: 1px solid var(--line);
   padding: 0.2rem 0;
