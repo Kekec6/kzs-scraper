@@ -52,8 +52,8 @@ CONFIG = {
     'last_scrape_file': str(DATA_DIR / 'last_scrape.json'),
 
     # Javni URL/pot do HTML (za email). Primeri:
+    # 'https://TVOJ_USER.github.io/kzs'
     # 'http://intranet/kzs/html'
-    # 'file://///fileserver/share/kzs/output/html'
     'html_public_base': '',
 
     # Smoke test pred celim scrapom
