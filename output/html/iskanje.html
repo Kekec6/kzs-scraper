@@ -7,7 +7,7 @@
 <title>KZS – iskanje</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;550;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 
 :root {
@@ -21,8 +21,8 @@
   --surface: rgba(255,255,255,0.72);
   --line: rgba(11,16,32,0.1);
   --radius: 0;
-  --font-display: "Syne", "Avenir Next", sans-serif;
-  --font-body: "Figtree", "Segoe UI", sans-serif;
+  --font-display: "Manrope", "Segoe UI", sans-serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --pad: clamp(1.1rem, 3vw, 2.4rem);
 }
@@ -224,8 +224,8 @@ a.player:hover, a.team:hover, a.league-link:hover {
   50% { transform: translate3d(12px,-18px,0) scale(1.04); }
 }
 @keyframes brandIn {
-  from { opacity: 0; letter-spacing: 0.35em; filter: blur(8px); }
-  to { opacity: 1; letter-spacing: -0.06em; filter: blur(0); }
+  from { opacity: 0; letter-spacing: 0.12em; filter: blur(6px); }
+  to { opacity: 1; letter-spacing: -0.03em; filter: blur(0); }
 }
 @keyframes pulseDot {
   0%, 100% { transform: scale(1); opacity: 1; }
@@ -286,9 +286,10 @@ a.player:hover, a.team:hover, a.league-link:hover {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(4.2rem, 16vw, 9.5rem);
-  line-height: 0.82;
-  letter-spacing: -0.06em;
+  font-size: clamp(3.6rem, 12vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-variation-settings: normal;
   color: var(--ink);
   animation: brandIn 1.1s var(--ease) both;
 }
@@ -554,7 +555,7 @@ h3.dual-league {
 
 <div class="search-hero">
   <h1 class="rise">Iskanje</h1>
-  <p class="meta rise">77 ekip · 1083 igralcev · 22 dvojnih · 22.09. 08:09</p>
+  <p class="meta rise">77 ekip · 1083 igralcev · 22 dvojnih · posodobljeno 22.09. 08:09</p>
   <p class="meta" id="scrape-warn" hidden></p>
 </div>
 
@@ -575,8 +576,8 @@ h3.dual-league {
     <div id="favorites-body"></div>
   </section>
   <div class="league-nav rise">
-    <a href="#liga-liga-otp-banka">1. SKL OTP Banka</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/liga-otp-banka?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a><a href="#liga-2-skl-za-moske">2. SKL moški</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/2-skl-za-moske?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a><a href="#liga-3-skl-za-moske">3. SKL moški</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/3-skl-za-moske?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a><a href="#liga-4-skl-za-moske">4. SKL moški</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/4-skl-za-moske?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a><a href="#liga-1-skl-za-zenske">1. SKL ženske</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/1-skl-za-zenske?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a>
     <a href="#dvojne-registracije">Dvojne (22)</a>
+    <a href="#liga-liga-otp-banka">1. SKL OTP Banka</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/liga-otp-banka?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a><a href="#liga-2-skl-za-moske">2. SKL moški</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/2-skl-za-moske?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a><a href="#liga-3-skl-za-moske">3. SKL moški</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/3-skl-za-moske?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a><a href="#liga-4-skl-za-moske">4. SKL moški</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/4-skl-za-moske?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a><a href="#liga-1-skl-za-zenske">1. SKL ženske</a> <a class="league-ext" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/1-skl-za-zenske?tab=ekipe" target="_blank" rel="noopener" title="Odpri na KZS">↗</a>
   </div>
   
 <details class="league" id="dvojne-registracije">
@@ -585,7 +586,6 @@ h3.dual-league {
     <span class="meta">(22 igralcev)</span>
   </summary>
   <div class="league-body">
-  <p class="meta">Razvrščeno po ligah in klubih.</p>
   <h3 class='dual-league'><a class="league-link" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/liga-otp-banka?tab=ekipe" target="_blank" rel="noopener" onclick="event.stopPropagation()">1. SKL OTP Banka</a></h3><div class='dual-club'><h4><a class="team" href="https://www.kzs.si/ekipa/18645?tekmovanje=608" target="_blank" rel="noopener" onclick="event.stopPropagation()">CEDEVITA OLIMPIJA</a> <span class='meta'>(4)</span></h4><ul class='dual-list'><li><a class="player" href="https://www.kzs.si/igralec/87633" target="_blank" rel="noopener">Jaka Jagodnik</a> → <a class="team" href="https://www.kzs.si/ekipa/18669?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">CEDEVITA OLIMPIJA MLADI</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/84586" target="_blank" rel="noopener">Mark Hukić</a> → <a class="team" href="https://www.kzs.si/ekipa/18669?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">CEDEVITA OLIMPIJA MLADI</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/88723" target="_blank" rel="noopener">Roman Kolka</a> → <a class="team" href="https://www.kzs.si/ekipa/18669?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">CEDEVITA OLIMPIJA MLADI</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/84342" target="_blank" rel="noopener">Uroš Stjepanović</a> → <a class="team" href="https://www.kzs.si/ekipa/18669?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">CEDEVITA OLIMPIJA MLADI</a> <span class='meta'>(3. SKL moški)</span></li></ul></div><div class='dual-club'><h4><a class="team" href="https://www.kzs.si/ekipa/18647?tekmovanje=608" target="_blank" rel="noopener" onclick="event.stopPropagation()">GGD ŠENČUR</a> <span class='meta'>(2)</span></h4><ul class='dual-list'><li><a class="player" href="https://www.kzs.si/igralec/84853" target="_blank" rel="noopener">Max Gubanec Logar</a> → <a class="team" href="https://www.kzs.si/ekipa/19324?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">KOMENDA</a> <span class='meta'>(4. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/92451" target="_blank" rel="noopener">Tristan Jolić</a> → <a class="team" href="https://www.kzs.si/ekipa/18684?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">STRAŽIŠČE KRANJ</a> <span class='meta'>(3. SKL moški)</span></li></ul></div><div class='dual-club'><h4><a class="team" href="https://www.kzs.si/ekipa/18649?tekmovanje=608" target="_blank" rel="noopener" onclick="event.stopPropagation()">GORICA</a> <span class='meta'>(4)</span></h4><ul class='dual-list'><li><a class="player" href="https://www.kzs.si/igralec/86225" target="_blank" rel="noopener">Anis Artuković</a> → <a class="team" href="https://www.kzs.si/ekipa/18685?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">TERA TOLMIN</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/93710" target="_blank" rel="noopener">Matej Corsi</a> → <a class="team" href="https://www.kzs.si/ekipa/18685?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">TERA TOLMIN</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/92932" target="_blank" rel="noopener">Taj Koglot</a> → <a class="team" href="https://www.kzs.si/ekipa/18685?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">TERA TOLMIN</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/86238" target="_blank" rel="noopener">Tian Kuburić</a> → <a class="team" href="https://www.kzs.si/ekipa/18685?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">TERA TOLMIN</a> <span class='meta'>(3. SKL moški)</span></li></ul></div><div class='dual-club'><h4><a class="team" href="https://www.kzs.si/ekipa/18655?tekmovanje=608" target="_blank" rel="noopener" onclick="event.stopPropagation()">LAŠKO</a> <span class='meta'>(2)</span></h4><ul class='dual-list'><li><a class="player" href="https://www.kzs.si/igralec/86009" target="_blank" rel="noopener">Tijan Božić</a> → <a class="team" href="https://www.kzs.si/ekipa/18672?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">HRASTNIK</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/90625" target="_blank" rel="noopener">Žan Terbovc</a> → <a class="team" href="https://www.kzs.si/ekipa/18672?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">HRASTNIK</a> <span class='meta'>(3. SKL moški)</span></li></ul></div><div class='dual-club'><h4><a class="team" href="https://www.kzs.si/ekipa/18652?tekmovanje=608" target="_blank" rel="noopener" onclick="event.stopPropagation()">ROGAŠKA</a> <span class='meta'>(3)</span></h4><ul class='dual-list'><li><a class="player" href="https://www.kzs.si/igralec/84168" target="_blank" rel="noopener">Aljaž Toplišek</a> → <a class="team" href="https://www.kzs.si/ekipa/18668?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">BISTRICA KETY EMMI</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/85216" target="_blank" rel="noopener">Nik Stanković</a> → <a class="team" href="https://www.kzs.si/ekipa/18668?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">BISTRICA KETY EMMI</a> <span class='meta'>(3. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/90305" target="_blank" rel="noopener">Jakob Lovrenčec</a> → <a class="team" href="https://www.kzs.si/ekipa/18674?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">MIKLAVŽ</a> <span class='meta'>(3. SKL moški)</span></li></ul></div><h3 class='dual-league'><a class="league-link" href="https://www.kzs.si/tekmovanja/ligaska-tekmovanja/2-skl-za-moske?tab=ekipe" target="_blank" rel="noopener" onclick="event.stopPropagation()">2. SKL moški</a></h3><div class='dual-club'><h4><a class="team" href="https://www.kzs.si/ekipa/18664?tekmovanje=609" target="_blank" rel="noopener" onclick="event.stopPropagation()">LEONE AJDOVŠČINA</a> <span class='meta'>(1)</span></h4><ul class='dual-list'><li><a class="player" href="https://www.kzs.si/igralec/93623" target="_blank" rel="noopener">Nejc Saksida</a> → <a class="team" href="https://www.kzs.si/ekipa/19327?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">KRAS</a> <span class='meta'>(4. SKL moški)</span></li></ul></div><div class='dual-club'><h4><a class="team" href="https://www.kzs.si/ekipa/18665?tekmovanje=609" target="_blank" rel="noopener" onclick="event.stopPropagation()">LTH CASTINGS</a> <span class='meta'>(4)</span></h4><ul class='dual-list'><li><a class="player" href="https://www.kzs.si/igralec/87143" target="_blank" rel="noopener">Bor Bokan</a> → <a class="team" href="https://www.kzs.si/ekipa/19320?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">GORENJA VAS</a> <span class='meta'>(4. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/85658" target="_blank" rel="noopener">Luka Potočnik</a> → <a class="team" href="https://www.kzs.si/ekipa/19320?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">GORENJA VAS</a> <span class='meta'>(4. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/91998" target="_blank" rel="noopener">Tin Malovčić</a> → <a class="team" href="https://www.kzs.si/ekipa/19320?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">GORENJA VAS</a> <span class='meta'>(4. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/87161" target="_blank" rel="noopener">Tine Zakotnik</a> → <a class="team" href="https://www.kzs.si/ekipa/19320?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">GORENJA VAS</a> <span class='meta'>(4. SKL moški)</span></li></ul></div><div class='dual-club'><h4><a class="team" href="https://www.kzs.si/ekipa/18660?tekmovanje=609" target="_blank" rel="noopener" onclick="event.stopPropagation()">SLOVAN</a> <span class='meta'>(2)</span></h4><ul class='dual-list'><li><a class="player" href="https://www.kzs.si/igralec/85823" target="_blank" rel="noopener">Jurij Ban</a> → <a class="team" href="https://www.kzs.si/ekipa/19322?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">GLOBUS</a> <span class='meta'>(4. SKL moški)</span></li><li><a class="player" href="https://www.kzs.si/igralec/93158" target="_blank" rel="noopener">Luka Milaković</a> → <a class="team" href="https://www.kzs.si/ekipa/19322?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">GLOBUS</a> <span class='meta'>(4. SKL moški)</span></li></ul></div>
   </div>
 </details>

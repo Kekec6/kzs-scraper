@@ -25,8 +25,8 @@ SITE_CSS = r"""
   --surface: rgba(255,255,255,0.72);
   --line: rgba(11,16,32,0.1);
   --radius: 0;
-  --font-display: "Syne", "Avenir Next", sans-serif;
-  --font-body: "Figtree", "Segoe UI", sans-serif;
+  --font-display: "Manrope", "Segoe UI", sans-serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --pad: clamp(1.1rem, 3vw, 2.4rem);
 }
@@ -228,8 +228,8 @@ a.player:hover, a.team:hover, a.league-link:hover {
   50% { transform: translate3d(12px,-18px,0) scale(1.04); }
 }
 @keyframes brandIn {
-  from { opacity: 0; letter-spacing: 0.35em; filter: blur(8px); }
-  to { opacity: 1; letter-spacing: -0.06em; filter: blur(0); }
+  from { opacity: 0; letter-spacing: 0.12em; filter: blur(6px); }
+  to { opacity: 1; letter-spacing: -0.03em; filter: blur(0); }
 }
 @keyframes pulseDot {
   0%, 100% { transform: scale(1); opacity: 1; }
@@ -290,9 +290,10 @@ a.player:hover, a.team:hover, a.league-link:hover {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(4.2rem, 16vw, 9.5rem);
-  line-height: 0.82;
-  letter-spacing: -0.06em;
+  font-size: clamp(3.6rem, 12vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-variation-settings: normal;
   color: var(--ink);
   animation: brandIn 1.1s var(--ease) both;
 }
@@ -543,8 +544,7 @@ h3.dual-league {
 
 FONTS_LINK = (
     'https://fonts.googleapis.com/css2?'
-    'family=Figtree:wght@400;550;600;700;800&'
-    'family=Syne:wght@600;700;800&display=swap'
+    'family=Manrope:wght@400;500;600;700;800&display=swap'
 )
 
 
@@ -1004,7 +1004,6 @@ def write_search(data, scrape_iso: str) -> str:
     <span class="meta">({len(dual)} igralcev)</span>
   </summary>
   <div class="league-body">
-  <p class="meta">Razvrščeno po ligah in klubih.</p>
   {''.join(dual_blocks)}
   </div>
 </details>
@@ -1017,7 +1016,7 @@ def write_search(data, scrape_iso: str) -> str:
     body = f"""
 <div class="search-hero">
   <h1 class="rise">Iskanje</h1>
-  <p class="meta rise">{total_teams} ekip · {unique_players} igralcev · {len(dual)} dvojnih · {when}</p>
+  <p class="meta rise">{total_teams} ekip · {unique_players} igralcev · {len(dual)} dvojnih · posodobljeno {when}</p>
   <p class="meta" id="scrape-warn" hidden></p>
 </div>
 
@@ -1038,8 +1037,8 @@ def write_search(data, scrape_iso: str) -> str:
     <div id="favorites-body"></div>
   </section>
   <div class="league-nav rise">
-    {''.join(league_nav)}
     <a href="#dvojne-registracije">Dvojne ({len(dual)})</a>
+    {''.join(league_nav)}
   </div>
   {dual_section}
   {''.join(league_sections)}
