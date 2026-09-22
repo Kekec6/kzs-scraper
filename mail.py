@@ -178,10 +178,11 @@ V tej analizi ni bilo zaznanih novih igralcev, prestopov ali registracij.
         if index_url or report_url:
             body += '\n\n🌐 HTML PREGLED:'
             if index_url:
-                body += f'\n• Ekipe / iskanje: {index_url}'
+                body += f'\n• Domov: {index_url}'
+            body += '\n• Spremembe: ' + (html_public_url('spremembe.html') or '')
+            body += '\n• Iskanje: ' + (html_public_url('iskanje.html') or '')
             if report_url:
-                body += f'\n• Poročilo sprememb: {report_url}'
-            body += '\n• Zgodovina: ' + (html_public_url('zgodovina.html') or '')
+                body += f'\n• Poročilo scrapa: {report_url}'
         elif CONFIG.get('html_public_base') == '':
             body += (
                 '\n\n💡 Namig: nastavi CONFIG[\'html_public_base\'] '

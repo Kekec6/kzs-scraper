@@ -184,7 +184,12 @@ def _cleanup_glob(directory, pattern, retention_days, label):
     cutoff = time.time() - (retention_days * 24 * 60 * 60)
     removed = 0
     for file_path in directory.glob(pattern):
-        if file_path.name == 'index.html':
+        if file_path.name in {
+            'index.html',
+            'iskanje.html',
+            'spremembe.html',
+            'zgodovina.html',
+        }:
             continue
         try:
             if file_path.stat().st_mtime < cutoff:
