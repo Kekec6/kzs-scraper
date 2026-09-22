@@ -21,6 +21,14 @@ TYPE_LABELS = {
     'sprememba_trener': 'Sprememba trenerja',
 }
 
+# Kaj ljubitelji gledajo: kdo → kam (brez odhodov/trenerjev)
+FAN_TYPES = frozenset({
+    'nov_igralec',
+    'nov_igralec_dvojna',
+    'prestop',
+    'dodatna_registracija',
+})
+
 LEAGUE_LABELS = {
     'liga-otp-banka': '1. SKL OTP Banka',
     '2-skl-za-moske': '2. SKL moški',
@@ -223,6 +231,53 @@ def _change_html(change, team_links=None, team_links_league=None):
         body = _esc(change)
 
     return f"<li><span class='badge'>{_esc(label)}</span> {body}</li>"
+
+
+def _format_ts_short(iso_ts):
+    """2026-09-22T08:09:05 → 22.09. 08:09"""
+    if not iso_ts:
+        return ''
+    try:
+        dt = datetime.fromisoformat(str(iso_ts).replace('Z', '+00:00'))
+        return dt.strftime('%d.%m. %H:%M')
+    except ValueError:
+        return str(iso_ts)[:16]
+
+
+def _fan_change_line(change, ts, team_links=None, team_links_league=None):
+    """Ena vrstica za ljubitelje: kdo → klub (liga)."""
+    t = change.get('type')
+    if t not in FAN_TYPES:
+        return ''
+    label = TYPE_LABELS.get(t, t)
+    # Reuse _change_html body (strip outer <li>…</li>)
+    full = _change_html(change, team_links, team_links_league)
+    # full = <li><span class='badge'>…</span> BODY</li>
+    if full.startswith('<li>') and full.endswith('</li>'):
+        inner = full[4:-5]
+    else:
+        inner = full
+    when = _format_ts_short(ts)
+    return (
+        f"<li class='feed-item' data-filter='{_esc(t)}'>"
+        f"{inner}"
+        f"<span class='when'>{_esc(when)}</span>"
+        f"</li>"
+    )
+
+
+def _recent_fan_feed(history_entries, team_links=None, team_links_league=None, limit=80):
+    """Zadnji registracije/prestopi iz JSONL (najnovejši najprej)."""
+    rows = []
+    for entry in reversed(history_entries or []):
+        ts = entry.get('ts')
+        for change in entry.get('changes') or []:
+            line = _fan_change_line(change, ts, team_links, team_links_league)
+            if line:
+                rows.append(line)
+            if len(rows) >= limit:
+                return rows
+    return rows
 
 
 def _dual_registrations(data):
@@ -535,7 +590,7 @@ def generate_roster_html(data, scrape_meta=None):
     if not CONFIG.get('generate_html', True):
         return None
 
-    from storage import read_last_scrape
+    from storage import read_last_scrape, read_change_history
 
     data = data or {}
     scrape_meta = scrape_meta or read_last_scrape() or {}
@@ -547,6 +602,18 @@ def generate_roster_html(data, scrape_meta=None):
     # unikatni igralci (ne vrstice ekipa×igralec)
     unique_players = len({p['id'] for p in players if p['id']})
 
+    team_links, team_links_league = _team_links_map(data)
+    fan_rows = _recent_fan_feed(
+        read_change_history(months_back=3),
+        team_links,
+        team_links_league,
+        limit=60,
+    )
+    fan_list = (
+        ''.join(fan_rows)
+        if fan_rows
+        else '<li class="meta">Še ni registracij v zgodovini.</li>'
+    )
     # Navigacija po ligah
     league_nav = []
     league_sections = []
@@ -688,7 +755,7 @@ def generate_roster_html(data, scrape_meta=None):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KZS – ekipe in igralci</title>
+<title>KZS registracije</title>
 <style>
 {COMMON_CSS}
   .search-box {{
@@ -870,21 +937,59 @@ def generate_roster_html(data, scrape_meta=None):
   }}
   #browse.hidden {{ display: none; }}
   footer {{ margin-top: 2rem; color: var(--muted); font-size: 0.9rem; }}
+  section.feed {{
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1rem 1.1rem 0.6rem;
+    margin-bottom: 1.75rem;
+  }}
+  section.feed > h2 {{ margin-top: 0; }}
+  ul.feed-list {{ list-style: none; padding: 0; margin: 0.5rem 0 0; }}
+  li.feed-item {{
+    border-top: 1px solid var(--line);
+    padding: 0.65rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+    align-items: baseline;
+  }}
+  li.feed-item .when {{
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }}
+  .feed-filters {{ display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 0.25rem; }}
 </style>
 </head>
 <body>
 <main>
   <nav class="nav">
-    <a href="index.html">Pregled / iskanje</a>
-    <a href="zgodovina.html">Zgodovina</a>
+    <a href="#zadnje">Zadnje registracije</a>
+    <a href="#browse">Ekipe / iskanje</a>
     <a href="#dvojne-registracije">Dvojne registracije</a>
   </nav>
-  <h1>KZS – ekipe in igralci</h1>
+  <h1>KZS registracije</h1>
   <p class="sub">
-    Zadnji scrape: <strong id="scrape-when">{_esc(scrape_iso)}</strong>
+    Kdo → kateri klub → liga · posodobljeno <strong id="scrape-when">{_esc(scrape_iso)}</strong>
     · <span id="scrape-age">računam…</span>
   </p>
   <p class="sub meta" id="scrape-warn" hidden></p>
+
+  <section class="feed" id="zadnje">
+    <h2>Zadnje registracije</h2>
+    <p class="meta">Novi igralci, prestopi in dodatne registracije.</p>
+    <div class="feed-filters filters" id="feed-filters">
+      <button type="button" class="filter-btn active" data-filter="all">Vse</button>
+      <button type="button" class="filter-btn" data-filter="nov_igralec,nov_igralec_dvojna">Novi</button>
+      <button type="button" class="filter-btn" data-filter="prestop">Prestopi</button>
+      <button type="button" class="filter-btn" data-filter="dodatna_registracija">Dodatne reg.</button>
+    </div>
+    <ul class="feed-list">
+      {fan_list}
+    </ul>
+  </section>
+
   <div class="stats">
     <span>{total_teams} ekip</span>
     <span>{unique_players} igralcev</span>
@@ -897,7 +1002,7 @@ def generate_roster_html(data, scrape_meta=None):
   </div>
 
   <div class="search-box">
-    <input type="search" id="q" placeholder="Išči: ime, priimek, ekipa, liga…" autocomplete="off" autofocus>
+    <input type="search" id="q" placeholder="Išči: ime, priimek, ekipa, liga…" autocomplete="off">
     <p class="hint">☆ = favorit (localStorage). Klik na igralca/ekipo/ligo → KZS.</p>
   </div>
 
@@ -917,7 +1022,7 @@ def generate_roster_html(data, scrape_meta=None):
   </div>
 
   <footer>
-    <a href="zgodovina.html">Zgodovina sprememb →</a>
+    Pregled ekip spodaj · podatki iz KZS scrapa
   </footer>
 </main>
 
@@ -1089,13 +1194,25 @@ def generate_roster_html(data, scrape_meta=None):
     const id = (location.hash || '').slice(1);
     if (!id) return;
     const el = document.getElementById(id);
-    if (el && el.tagName === 'DETAILS') {{
-      el.open = true;
-      el.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
-    }}
+    if (!el) return;
+    if (el.tagName === 'DETAILS') el.open = true;
+    el.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
   }}
   window.addEventListener('hashchange', openHashLeague);
   openHashLeague();
+
+  // Filtri feeda registracij
+  document.querySelectorAll('#feed-filters .filter-btn').forEach(btn => {{
+    btn.addEventListener('click', () => {{
+      document.querySelectorAll('#feed-filters .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const keys = (btn.getAttribute('data-filter') || 'all').split(',');
+      document.querySelectorAll('.feed-item').forEach(li => {{
+        const t = li.getAttribute('data-filter');
+        li.style.display = (keys[0] === 'all' || keys.includes(t)) ? '' : 'none';
+      }});
+    }});
+  }});
 }})();
 </script>
 </body>
@@ -1112,63 +1229,39 @@ def generate_roster_html(data, scrape_meta=None):
 
 def update_html_index(history_entries=None, roster_data=None):
     """
-    Posodobi zgodovina.html (+ po želji roster index, če je podan roster_data).
+    Ljubiteljska zgodovina = feed registracij (brez HTML poročil / scrape tabel).
+    Posodobi tudi index.html, če je podan roster_data ali obstaja JSON.
     """
-    from storage import read_change_history
+    from storage import read_change_history, read_from_disc, read_last_scrape
 
     if roster_data is not None:
         generate_roster_html(roster_data)
+    else:
+        # Osveži feed tudi na indexu, če imamo shranjene ekipe
+        try:
+            data, _ = read_from_disc()
+            if data:
+                generate_roster_html(data)
+        except Exception:
+            pass
 
     if history_entries is None:
-        history_entries = read_change_history(months_back=2)
+        history_entries = read_change_history(months_back=3)
 
-    html_files = sorted(
-        HTML_DIR.glob('prestopi_kosarka_*.html'),
-        key=lambda p: p.stat().st_mtime,
-        reverse=True,
-    )[:40]
+    team_links, team_links_league = {}, {}
+    try:
+        data_path = Path(CONFIG['json_file'])
+        if data_path.exists():
+            data = json.loads(data_path.read_text(encoding='utf-8'))
+            team_links, team_links_league = _team_links_map(data)
+    except Exception:
+        pass
 
-    rows_history = []
-    detail_blocks = []
-    for idx, entry in enumerate(reversed(history_entries[-50:])):
-        ts = entry.get('ts', '')
-        changes = entry.get('changes') or []
-        n_changes = len(changes)
-        n_fail = len(entry.get('scrape_failures') or [])
-        stats = entry.get('stats') or {}
-        types = sorted({c.get('type') for c in changes if c.get('type')})
-        types_attr = ' '.join(types)
-        rows_history.append(
-            f'<tr class="hist-row" data-types="{_esc(types_attr)}">'
-            f'<td>{_esc(ts)}</td>'
-            f'<td>{n_changes}</td>'
-            f'<td>{n_fail}</td>'
-            f'<td>{stats.get("teams", "")}</td>'
-            f'<td>{stats.get("players", "")}</td>'
-            '</tr>'
-        )
-        if changes:
-            items = [
-                _change_html(c).replace(
-                    '<li>',
-                    f"<li class='hist-change' data-filter='{_esc(c.get('type'))}'>",
-                    1,
-                )
-                for c in changes
-            ]
-            detail_blocks.append(
-                f"<details class='hist-entry' data-types='{_esc(types_attr)}'>"
-                f"<summary>{_esc(ts)} · {n_changes} sprememb</summary>"
-                f"<ul>{''.join(items)}</ul></details>"
-            )
-
-    rows_files = []
-    for path in html_files:
-        mtime = datetime.fromtimestamp(path.stat().st_mtime).strftime('%d.%m.%Y %H:%M')
-        rows_files.append(
-            f"<li><a href='{_esc(path.name)}'>{_esc(path.name)}</a> "
-            f"<span class='meta'>({mtime})</span></li>"
-        )
+    fan_rows = _recent_fan_feed(
+        history_entries, team_links, team_links_league, limit=120
+    )
+    scrape = read_last_scrape() or {}
+    scrape_iso = scrape.get('iso') or ''
 
     history_path = HTML_DIR / 'zgodovina.html'
     history_path.write_text(
@@ -1177,30 +1270,31 @@ def update_html_index(history_entries=None, roster_data=None):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KZS – zgodovina</title>
+<title>KZS – zadnje registracije</title>
 <style>
 {COMMON_CSS}
-  table {{
-    width: 100%;
-    border-collapse: collapse;
+  .feed {{
     background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1rem 1.1rem 0.6rem;
     margin-bottom: 1.5rem;
   }}
-  th, td {{
-    border-bottom: 1px solid var(--line);
-    text-align: left;
-    padding: 0.55rem 0.6rem;
-    font-size: 0.95rem;
+  ul.feed-list {{ list-style: none; padding: 0; margin: 0.5rem 0 0; }}
+  li.feed-item {{
+    border-top: 1px solid var(--line);
+    padding: 0.65rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+    align-items: baseline;
   }}
-  th {{
+  li.feed-item .when {{
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.88rem;
     font-family: ui-sans-serif, system-ui, sans-serif;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--accent);
   }}
-  ul {{ padding-left: 1.1rem; }}
-  .filters {{ display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }}
+  .filters {{ display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0.4rem; }}
   .filters button {{
     font-family: ui-sans-serif, system-ui, sans-serif;
     font-size: 0.82rem;
@@ -1210,74 +1304,43 @@ def update_html_index(history_entries=None, roster_data=None):
     cursor: pointer;
   }}
   .filters button.active {{ background: #ccfbf1; border-color: var(--accent); }}
-  details.hist-entry {{
-    background: var(--card);
-    border: 1px solid var(--line);
-    padding: 0.4rem 0.8rem;
-    margin-bottom: 0.5rem;
-  }}
 </style>
 </head>
 <body>
 <main>
   <nav class="nav">
-    <a href="index.html">Pregled / iskanje</a>
-    <a href="zgodovina.html">Zgodovina</a>
+    <a href="index.html">Domov</a>
+    <a href="index.html#zadnje">Zadnje registracije</a>
   </nav>
-  <h1>KZS – zgodovina</h1>
-  <p class="sub">JSONL zagoni + HTML poročila o spremembah</p>
+  <h1>Zadnje registracije</h1>
+  <p class="sub">Kdo → kateri klub → liga · posodobljeno {_esc(_format_ts_short(scrape_iso))}</p>
 
-  <div class="filters" id="hist-filters">
+  <div class="filters" id="feed-filters">
     <button type="button" class="filter-btn active" data-filter="all">Vse</button>
+    <button type="button" class="filter-btn" data-filter="nov_igralec,nov_igralec_dvojna">Novi</button>
     <button type="button" class="filter-btn" data-filter="prestop">Prestopi</button>
-    <button type="button" class="filter-btn" data-filter="nov_igralec,nov_igralec_dvojna,dodatna_registracija">Novi / reg.</button>
-    <button type="button" class="filter-btn" data-filter="igralec_odsel">Odhodi</button>
-    <button type="button" class="filter-btn" data-filter="sprememba_trener,nov_trener_v_ekipo,trener_odsel_iz_ekipe">Trenerji</button>
+    <button type="button" class="filter-btn" data-filter="dodatna_registracija">Dodatne reg.</button>
   </div>
 
-  <h2>Zadnji zagoni</h2>
-  <table>
-    <thead>
-      <tr><th>Čas</th><th>Spremembe</th><th>Scrape napake</th><th>Ekipe</th><th>Igralci</th></tr>
-    </thead>
-    <tbody>
-      {''.join(rows_history) if rows_history else '<tr><td colspan="5">Še ni zgodovine.</td></tr>'}
-    </tbody>
-  </table>
-
-  <h2>Podrobnosti sprememb (JSONL)</h2>
-  {''.join(detail_blocks) if detail_blocks else '<p class="meta">Ni podrobnosti.</p>'}
-
-  <h2>HTML poročila sprememb</h2>
-  <ul>
-    {''.join(rows_files) if rows_files else '<li>Ni HTML poročil.</li>'}
-  </ul>
+  <section class="feed">
+    <ul class="feed-list">
+      {''.join(fan_rows) if fan_rows else '<li class="meta">Ni registracij.</li>'}
+    </ul>
+  </section>
 </main>
 <script>
 (function() {{
-  const btns = document.querySelectorAll('#hist-filters .filter-btn');
-  function apply(keys) {{
-    document.querySelectorAll('.hist-row').forEach(row => {{
-      const types = (row.getAttribute('data-types') || '').split(/\\s+/).filter(Boolean);
-      const ok = keys[0] === 'all' || types.some(t => keys.includes(t));
-      row.style.display = ok ? '' : 'none';
-    }});
-    document.querySelectorAll('.hist-entry').forEach(entry => {{
-      const types = (entry.getAttribute('data-types') || '').split(/\\s+/).filter(Boolean);
-      const ok = keys[0] === 'all' || types.some(t => keys.includes(t));
-      entry.style.display = ok ? '' : 'none';
-      if (!ok) return;
-      entry.querySelectorAll('.hist-change').forEach(li => {{
+  document.querySelectorAll('#feed-filters .filter-btn').forEach(btn => {{
+    btn.addEventListener('click', () => {{
+      document.querySelectorAll('#feed-filters .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const keys = (btn.getAttribute('data-filter') || 'all').split(',');
+      document.querySelectorAll('.feed-item').forEach(li => {{
         const t = li.getAttribute('data-filter');
         li.style.display = (keys[0] === 'all' || keys.includes(t)) ? '' : 'none';
       }});
     }});
-  }}
-  btns.forEach(btn => btn.addEventListener('click', () => {{
-    btns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    apply((btn.getAttribute('data-filter') || 'all').split(','));
-  }}));
+  }});
 }})();
 </script>
 </body>
@@ -1285,5 +1348,5 @@ def update_html_index(history_entries=None, roster_data=None):
 """,
         encoding='utf-8',
     )
-    logger.info(f'HTML zgodovina posodobljena: {history_path}')
+    logger.info(f'HTML zgodovina (feed) posodobljena: {history_path}')
     return str(history_path)
