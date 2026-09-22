@@ -1,0 +1,53 @@
+# Scrape na GitHub Actions → commit data/HTML → Pages se deploya prek workflowa "Deploy Pages".
+# Privzeto samo ročno (Actions → Scrape and publish → Run).
+name: Scrape and publish
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '20 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape-publish
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install Chrome + deps
+        run: |
+          pip install -r requirements.txt
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser chromium-chromedriver
+
+      - name: Run KZS scraper
+        env:
+          CHROME_BIN: /usr/bin/chromium-browser
+          CHROMEDRIVER_PATH: /usr/bin/chromedriver
+        run: python kzs_new_player.py --no-email --no-lock
+
+      - name: Commit updated data and HTML
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ output/html/ || true
+          if git diff --staged --quiet; then
+            echo "Ni sprememb za commit."
+          else
+            git commit -m "chore: scrape update $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi

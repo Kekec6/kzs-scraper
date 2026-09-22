@@ -1,0 +1,28 @@
+# Python / OS
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+.env
+.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Runtime / heavy artifacts
+logs/
+*.log
+data/scraper.lock
+data/test.lock
+output/pdf/
+old/
+
+# Chrome / selenium
+chromedriver*
+*.crx
+
+# Local IDE
+.idea/
+.vscode/

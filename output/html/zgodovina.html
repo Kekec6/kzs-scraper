@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KZS – zgodovina</title>
+<style>
+
+  :root {
+    --bg: #f6f3ee;
+    --ink: #1c1917;
+    --muted: #57534e;
+    --accent: #0f766e;
+    --card: #fffdf9;
+    --line: #e7e5e4;
+    --warn: #9a3412;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    background:
+      radial-gradient(circle at top left, #dceeea 0%, transparent 40%),
+      linear-gradient(180deg, #f6f3ee, #efe8df);
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 0 0 0.35rem; letter-spacing: -0.02em; }
+  h2 { font-size: 1.15rem; margin: 1.4rem 0 0.6rem; color: var(--accent); }
+  .sub { color: var(--muted); margin-bottom: 1.25rem; }
+  a { color: var(--accent); }
+  a.player {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a.player:hover { color: #115e59; }
+  a.team {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a.team:hover { color: #115e59; }
+  .meta { color: var(--muted); font-size: 0.92em; }
+  .nav { margin-bottom: 1.25rem; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.9rem; }
+  .nav a { margin-right: 1rem; }
+  .badge {
+    display: inline-block;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #ccfbf1;
+    color: #115e59;
+    padding: 0.15rem 0.4rem;
+    margin-right: 0.35rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    margin-bottom: 1.5rem;
+  }
+  th, td {
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    padding: 0.55rem 0.6rem;
+    font-size: 0.95rem;
+  }
+  th {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+  }
+  ul { padding-left: 1.1rem; }
+  .filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }
+  .filters button {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.65rem;
+    border: 1px solid var(--line);
+    background: var(--card);
+    cursor: pointer;
+  }
+  .filters button.active { background: #ccfbf1; border-color: var(--accent); }
+  details.hist-entry {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <nav class="nav">
+    <a href="index.html">Pregled / iskanje</a>
+    <a href="zgodovina.html">Zgodovina</a>
+  </nav>
+  <h1>KZS – zgodovina</h1>
+  <p class="sub">JSONL zagoni + HTML poročila o spremembah</p>
+
+  <div class="filters" id="hist-filters">
+    <button type="button" class="filter-btn active" data-filter="all">Vse</button>
+    <button type="button" class="filter-btn" data-filter="prestop">Prestopi</button>
+    <button type="button" class="filter-btn" data-filter="nov_igralec,nov_igralec_dvojna,dodatna_registracija">Novi / reg.</button>
+    <button type="button" class="filter-btn" data-filter="igralec_odsel">Odhodi</button>
+    <button type="button" class="filter-btn" data-filter="sprememba_trener,nov_trener_v_ekipo,trener_odsel_iz_ekipe">Trenerji</button>
+  </div>
+
+  <h2>Zadnji zagoni</h2>
+  <table>
+    <thead>
+      <tr><th>Čas</th><th>Spremembe</th><th>Scrape napake</th><th>Ekipe</th><th>Igralci</th></tr>
+    </thead>
+    <tbody>
+      <tr class="hist-row" data-types="nov_igralec nov_trener_v_ekipo prestop"><td>2026-09-22T08:09:05</td><td>40</td><td>0</td><td>77</td><td>1105</td></tr><tr class="hist-row" data-types="nov_igralec"><td>2026-09-21T17:10:28</td><td>2</td><td>0</td><td>77</td><td>1067</td></tr><tr class="hist-row" data-types="nov_trener_v_ekipo"><td>2026-09-21T15:10:27</td><td>1</td><td>0</td><td>77</td><td>1065</td></tr><tr class="hist-row" data-types="dodatna_registracija nov_igralec"><td>2026-09-21T13:10:25</td><td>34</td><td>0</td><td>77</td><td>1065</td></tr><tr class="hist-row" data-types="dodatna_registracija nov_igralec"><td>2026-09-21T12:41:57</td><td>6</td><td>6</td><td>77</td><td>1031</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Podrobnosti sprememb (JSONL)</h2>
+  <details class='hist-entry' data-types='nov_igralec nov_trener_v_ekipo prestop'><summary>2026-09-22T08:09:05 · 40 sprememb</summary><ul><li class='hist-change' data-filter='prestop'><span class='badge'>Prestop</span> <a class="player" href="https://www.kzs.si/igralec/92451" target="_blank" rel="noopener">Tristan Jolić</a>: KOMENDA → STRAŽIŠČE KRANJ</li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/49415" target="_blank" rel="noopener">Gašper Jordan Rojko</a> → IPROS VRHNIKA <span class='meta'>(2. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/102934" target="_blank" rel="noopener">Bright Ogbemudia Nosakhare</a> → IPROS VRHNIKA <span class='meta'>(2. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/54446" target="_blank" rel="noopener">Domen Rus</a> → IPROS VRHNIKA <span class='meta'>(2. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/49872" target="_blank" rel="noopener">Anže Zdolšek</a> → IPROS VRHNIKA <span class='meta'>(2. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/91466" target="_blank" rel="noopener">David Bric</a> → LITIJA <span class='meta'>(3. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/91457" target="_blank" rel="noopener">Oskar Ribič</a> → LITIJA <span class='meta'>(3. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/49258" target="_blank" rel="noopener">Dominik Vršnik</a> → LITIJA <span class='meta'>(3. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/92454" target="_blank" rel="noopener">Luka Bubulj</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/92172" target="_blank" rel="noopener">Aljaž Cigler</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/92663" target="_blank" rel="noopener">Stin Mai Dorn</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/78699" target="_blank" rel="noopener">Lucijan Jakopanec</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/87808" target="_blank" rel="noopener">Nikola Kadović</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/86578" target="_blank" rel="noopener">Nal Kovše</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/91713" target="_blank" rel="noopener">Markus Kragl</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/87482" target="_blank" rel="noopener">Lovro Lončar Koražija</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/97326" target="_blank" rel="noopener">Maks Ogrizek</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/91967" target="_blank" rel="noopener">Jaša Oković</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/82391" target="_blank" rel="noopener">Alan Ovčina</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/92043" target="_blank" rel="noopener">Maks Podgoršek</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/94804" target="_blank" rel="noopener">Mai Stojnić</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/99510" target="_blank" rel="noopener">Rok Turnšek</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/80640" target="_blank" rel="noopener">Vanja Vlaović</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/90861" target="_blank" rel="noopener">Juš Zupanc</a> → KELEJA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/94221" target="_blank" rel="noopener">Danila Kulkin</a> → ORLI POSTOJNA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/81866" target="_blank" rel="noopener">Matic Plantan</a> → ORLI POSTOJNA <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/84225" target="_blank" rel="noopener">Lan Luka Cukor</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/85309" target="_blank" rel="noopener">Marcus Galli</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/88766" target="_blank" rel="noopener">Mark Ivanuša - Medjedovič</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/83640" target="_blank" rel="noopener">Marko Jan Juvan</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/85490" target="_blank" rel="noopener">Jon Kozorog</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/87925" target="_blank" rel="noopener">Simon Šimetić</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/93629" target="_blank" rel="noopener">Anže Štrakl</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/85089" target="_blank" rel="noopener">David Strušnik</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/97822" target="_blank" rel="noopener">Benjamin Tul</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/48172" target="_blank" rel="noopener">Jakob Virk</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/89937" target="_blank" rel="noopener">Andraž Vozel</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/83711" target="_blank" rel="noopener">Vito Vračko</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/53025" target="_blank" rel="noopener">Peter Vuković</a> → ŠENTVID <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_trener_v_ekipo'><span class='badge'>Nov trener</span> <strong>Matjaž Čuješ</strong> – ŽKK MARIBOR <span class='meta'>(3. SKL moški)</span></li></ul></details><details class='hist-entry' data-types='nov_igralec'><summary>2026-09-21T17:10:28 · 2 sprememb</summary><ul><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/55666" target="_blank" rel="noopener">Tine Kotnik</a> → GGD ŠENČUR <span class='meta'>(1. SKL OTP Banka)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/108871" target="_blank" rel="noopener">Erwin Gutić</a> → PORTOROŽ <span class='meta'>(2. SKL moški)</span></li></ul></details><details class='hist-entry' data-types='nov_trener_v_ekipo'><summary>2026-09-21T15:10:27 · 1 sprememb</summary><ul><li class='hist-change' data-filter='nov_trener_v_ekipo'><span class='badge'>Nov trener</span> <strong>Uroš Krevh</strong> – INNODULER KOROŠKA <span class='meta'>(3. SKL moški)</span></li></ul></details><details class='hist-entry' data-types='dodatna_registracija nov_igralec'><summary>2026-09-21T13:10:25 · 34 sprememb</summary><ul><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/84586" target="_blank" rel="noopener">Mark Hukić</a>: + CEDEVITA OLIMPIJA MLADI (poleg CEDEVITA OLIMPIJA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/87633" target="_blank" rel="noopener">Jaka Jagodnik</a>: + CEDEVITA OLIMPIJA MLADI (poleg CEDEVITA OLIMPIJA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/88723" target="_blank" rel="noopener">Roman Kolka</a>: + CEDEVITA OLIMPIJA MLADI (poleg CEDEVITA OLIMPIJA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/84342" target="_blank" rel="noopener">Uroš Stjepanović</a>: + CEDEVITA OLIMPIJA MLADI (poleg CEDEVITA OLIMPIJA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/86225" target="_blank" rel="noopener">Anis Artuković</a>: + TERA TOLMIN (poleg GORICA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/93710" target="_blank" rel="noopener">Matej Corsi</a>: + TERA TOLMIN (poleg GORICA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/92932" target="_blank" rel="noopener">Taj Koglot</a>: + TERA TOLMIN (poleg GORICA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/86238" target="_blank" rel="noopener">Tian Kuburić</a>: + TERA TOLMIN (poleg GORICA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/86009" target="_blank" rel="noopener">Tijan Božić</a>: + HRASTNIK (poleg LAŠKO)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/90625" target="_blank" rel="noopener">Žan Terbovc</a>: + HRASTNIK (poleg LAŠKO)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/90305" target="_blank" rel="noopener">Jakob Lovrenčec</a>: + MIKLAVŽ (poleg ROGAŠKA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/85216" target="_blank" rel="noopener">Nik Stanković</a>: + BISTRICA KETY EMMI (poleg ROGAŠKA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/84168" target="_blank" rel="noopener">Aljaž Toplišek</a>: + BISTRICA KETY EMMI (poleg ROGAŠKA)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/87143" target="_blank" rel="noopener">Bor Bokan</a>: + GORENJA VAS (poleg LTH CASTINGS)</li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/86209" target="_blank" rel="noopener">Pavle Đokić</a> → LTH CASTINGS <span class='meta'>(2. SKL moški)</span></li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/85658" target="_blank" rel="noopener">Luka Potočnik</a>: + GORENJA VAS (poleg LTH CASTINGS)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/87161" target="_blank" rel="noopener">Tine Zakotnik</a>: + GORENJA VAS (poleg LTH CASTINGS)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/93623" target="_blank" rel="noopener">Nejc Saksida</a>: + KRAS (poleg LEONE AJDOVŠČINA)</li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/87936" target="_blank" rel="noopener">Kristjan - Željko Kovačević</a> → JANČE ECP TACTICAL <span class='meta'>(3. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/93383" target="_blank" rel="noopener">Valentin Audič Kovačič</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/92322" target="_blank" rel="noopener">Maj Bruderman</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/87322" target="_blank" rel="noopener">Nikola Dizdarevič</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/87624" target="_blank" rel="noopener">Aldin Durović</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/49675" target="_blank" rel="noopener">Darjan Anej Fras</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/88397" target="_blank" rel="noopener">Bojan Grobler</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/53612" target="_blank" rel="noopener">Luka Horvat</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/99629" target="_blank" rel="noopener">Tristan Jordan</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/97210" target="_blank" rel="noopener">Tilen Kastelic</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/91045" target="_blank" rel="noopener">Luka Krajnc</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/90507" target="_blank" rel="noopener">Filip Podjavoršek</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/83630" target="_blank" rel="noopener">Jure Seifried</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/85479" target="_blank" rel="noopener">Gal Vindiš</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/82342" target="_blank" rel="noopener">Lan Voršič</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/97209" target="_blank" rel="noopener">Jan Zorko</a> → BBČ MARIBOR <span class='meta'>(4. SKL moški)</span></li></ul></details><details class='hist-entry' data-types='dodatna_registracija nov_igralec'><summary>2026-09-21T12:41:57 · 6 sprememb</summary><ul><li class='hist-change' data-filter='nov_igralec'><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/84586" target="_blank" rel="noopener">Mark Hukić</a> → CEDEVITA OLIMPIJA <span class='meta'>(1. SKL OTP Banka)</span></li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/84853" target="_blank" rel="noopener">Max Gubanec Logar</a>: + KOMENDA (poleg GGD ŠENČUR)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/92451" target="_blank" rel="noopener">Tristan Jolić</a>: + KOMENDA (poleg GGD ŠENČUR)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/91998" target="_blank" rel="noopener">Tin Malovčić</a>: + GORENJA VAS (poleg LTH CASTINGS)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/85823" target="_blank" rel="noopener">Jurij Ban</a>: + GLOBUS (poleg SLOVAN)</li><li class='hist-change' data-filter='dodatna_registracija'><span class='badge'>Dodatna registracija</span> <a class="player" href="https://www.kzs.si/igralec/93158" target="_blank" rel="noopener">Luka Milaković</a>: + GLOBUS (poleg SLOVAN)</li></ul></details>
+
+  <h2>HTML poročila sprememb</h2>
+  <ul>
+    <li><a href='prestopi_kosarka_20260922_0809.html'>prestopi_kosarka_20260922_0809.html</a> <span class='meta'>(22.09.2026 08:09)</span></li><li><a href='prestopi_kosarka_20260921_1710.html'>prestopi_kosarka_20260921_1710.html</a> <span class='meta'>(21.09.2026 17:10)</span></li><li><a href='prestopi_kosarka_20260921_1510.html'>prestopi_kosarka_20260921_1510.html</a> <span class='meta'>(21.09.2026 15:10)</span></li><li><a href='prestopi_kosarka_20260921_1310.html'>prestopi_kosarka_20260921_1310.html</a> <span class='meta'>(21.09.2026 13:10)</span></li><li><a href='prestopi_kosarka_20260921_1241.html'>prestopi_kosarka_20260921_1241.html</a> <span class='meta'>(21.09.2026 12:41)</span></li>
+  </ul>
+</main>
+<script>
+(function() {
+  const btns = document.querySelectorAll('#hist-filters .filter-btn');
+  function apply(keys) {
+    document.querySelectorAll('.hist-row').forEach(row => {
+      const types = (row.getAttribute('data-types') || '').split(/\s+/).filter(Boolean);
+      const ok = keys[0] === 'all' || types.some(t => keys.includes(t));
+      row.style.display = ok ? '' : 'none';
+    });
+    document.querySelectorAll('.hist-entry').forEach(entry => {
+      const types = (entry.getAttribute('data-types') || '').split(/\s+/).filter(Boolean);
+      const ok = keys[0] === 'all' || types.some(t => keys.includes(t));
+      entry.style.display = ok ? '' : 'none';
+      if (!ok) return;
+      entry.querySelectorAll('.hist-change').forEach(li => {
+        const t = li.getAttribute('data-filter');
+        li.style.display = (keys[0] === 'all' || keys.includes(t)) ? '' : 'none';
+      });
+    });
+  }
+  btns.forEach(btn => btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    apply((btn.getAttribute('data-filter') || 'all').split(','));
+  }));
+})();
+</script>
+</body>
+</html>
