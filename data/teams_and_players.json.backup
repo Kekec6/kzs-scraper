@@ -1319,6 +1319,11 @@
                     "link": "https://www.kzs.si/igralec/48361"
                 },
                 {
+                    "name": "Gašper Jordan Rojko",
+                    "player_id": "49415",
+                    "link": "https://www.kzs.si/igralec/49415"
+                },
+                {
                     "name": "Mitja Justin",
                     "player_id": "88853",
                     "link": "https://www.kzs.si/igralec/88853"
@@ -1334,6 +1339,11 @@
                     "link": "https://www.kzs.si/igralec/53324"
                 },
                 {
+                    "name": "Bright Ogbemudia Nosakhare",
+                    "player_id": "102934",
+                    "link": "https://www.kzs.si/igralec/102934"
+                },
+                {
                     "name": "Naj Rajh",
                     "player_id": "87217",
                     "link": "https://www.kzs.si/igralec/87217"
@@ -1344,9 +1354,9 @@
                     "link": "https://www.kzs.si/igralec/85294"
                 },
                 {
-                    "name": "Nace Smrekar",
-                    "player_id": "54448",
-                    "link": "https://www.kzs.si/igralec/54448"
+                    "name": "Domen Rus",
+                    "player_id": "54446",
+                    "link": "https://www.kzs.si/igralec/54446"
                 },
                 {
                     "name": "Miha Smrekar",
@@ -1354,9 +1364,19 @@
                     "link": "https://www.kzs.si/igralec/87218"
                 },
                 {
+                    "name": "Nace Smrekar",
+                    "player_id": "54448",
+                    "link": "https://www.kzs.si/igralec/54448"
+                },
+                {
                     "name": "Domen Vidic",
                     "player_id": "91216",
                     "link": "https://www.kzs.si/igralec/91216"
+                },
+                {
+                    "name": "Anže Zdolšek",
+                    "player_id": "49872",
+                    "link": "https://www.kzs.si/igralec/49872"
                 }
             ],
             "coach": {
@@ -2936,6 +2956,11 @@
             "competition_id": "610",
             "players": [
                 {
+                    "name": "David Bric",
+                    "player_id": "91466",
+                    "link": "https://www.kzs.si/igralec/91466"
+                },
+                {
                     "name": "Matic Gorenc",
                     "player_id": "91468",
                     "link": "https://www.kzs.si/igralec/91468"
@@ -2986,6 +3011,11 @@
                     "link": "https://www.kzs.si/igralec/84371"
                 },
                 {
+                    "name": "Oskar Ribič",
+                    "player_id": "91457",
+                    "link": "https://www.kzs.si/igralec/91457"
+                },
+                {
                     "name": "Patrick Slana",
                     "player_id": "97926",
                     "link": "https://www.kzs.si/igralec/97926"
@@ -2994,6 +3024,11 @@
                     "name": "Peter Ulčar",
                     "player_id": "50305",
                     "link": "https://www.kzs.si/igralec/50305"
+                },
+                {
+                    "name": "Dominik Vršnik",
+                    "player_id": "49258",
+                    "link": "https://www.kzs.si/igralec/49258"
                 },
                 {
                     "name": "Viktor Vujičić",
@@ -3383,6 +3418,11 @@
                     "link": "https://www.kzs.si/igralec/89226"
                 },
                 {
+                    "name": "Tristan Jolić",
+                    "player_id": "92451",
+                    "link": "https://www.kzs.si/igralec/92451"
+                },
+                {
                     "name": "Luka Jovanović",
                     "player_id": "97706",
                     "link": "https://www.kzs.si/igralec/97706"
@@ -3714,7 +3754,10 @@
                     "link": "https://www.kzs.si/igralec/48483"
                 }
             ],
-            "coach": null
+            "coach": {
+                "name": "Matjaž Čuješ",
+                "position": "Glavni trener"
+            }
         }
     ],
     "4-skl-za-moske": [
@@ -4630,7 +4673,88 @@
             "link": "https://www.kzs.si/ekipa/19335?tekmovanje=611",
             "team_id": "19335",
             "competition_id": "611",
-            "players": [],
+            "players": [
+                {
+                    "name": "Luka Bubulj",
+                    "player_id": "92454",
+                    "link": "https://www.kzs.si/igralec/92454"
+                },
+                {
+                    "name": "Aljaž Cigler",
+                    "player_id": "92172",
+                    "link": "https://www.kzs.si/igralec/92172"
+                },
+                {
+                    "name": "Stin Mai Dorn",
+                    "player_id": "92663",
+                    "link": "https://www.kzs.si/igralec/92663"
+                },
+                {
+                    "name": "Lucijan Jakopanec",
+                    "player_id": "78699",
+                    "link": "https://www.kzs.si/igralec/78699"
+                },
+                {
+                    "name": "Nikola Kadović",
+                    "player_id": "87808",
+                    "link": "https://www.kzs.si/igralec/87808"
+                },
+                {
+                    "name": "Nal Kovše",
+                    "player_id": "86578",
+                    "link": "https://www.kzs.si/igralec/86578"
+                },
+                {
+                    "name": "Markus Kragl",
+                    "player_id": "91713",
+                    "link": "https://www.kzs.si/igralec/91713"
+                },
+                {
+                    "name": "Lovro Lončar Koražija",
+                    "player_id": "87482",
+                    "link": "https://www.kzs.si/igralec/87482"
+                },
+                {
+                    "name": "Maks Ogrizek",
+                    "player_id": "97326",
+                    "link": "https://www.kzs.si/igralec/97326"
+                },
+                {
+                    "name": "Jaša Oković",
+                    "player_id": "91967",
+                    "link": "https://www.kzs.si/igralec/91967"
+                },
+                {
+                    "name": "Alan Ovčina",
+                    "player_id": "82391",
+                    "link": "https://www.kzs.si/igralec/82391"
+                },
+                {
+                    "name": "Maks Podgoršek",
+                    "player_id": "92043",
+                    "link": "https://www.kzs.si/igralec/92043"
+                },
+                {
+                    "name": "Mai Stojnić",
+                    "player_id": "94804",
+                    "link": "https://www.kzs.si/igralec/94804"
+                },
+                {
+                    "name": "Rok Turnšek",
+                    "player_id": "99510",
+                    "link": "https://www.kzs.si/igralec/99510"
+                },
+                {
+                    "name": "Vanja Vlaović",
+                    "player_id": "80640",
+                    "link": "https://www.kzs.si/igralec/80640"
+                },
+                {
+                    "name": "Juš Zupanc",
+                    "player_id": "90861",
+                    "link": "https://www.kzs.si/igralec/90861"
+                }
+            ],
             "coach": null
         },
         {
@@ -4643,11 +4767,6 @@
                     "name": "Max Gubanec Logar",
                     "player_id": "84853",
                     "link": "https://www.kzs.si/igralec/84853"
-                },
-                {
-                    "name": "Tristan Jolić",
-                    "player_id": "92451",
-                    "link": "https://www.kzs.si/igralec/92451"
                 }
             ],
             "coach": null
@@ -5209,6 +5328,11 @@
                     "link": "https://www.kzs.si/igralec/49988"
                 },
                 {
+                    "name": "Danila Kulkin",
+                    "player_id": "94221",
+                    "link": "https://www.kzs.si/igralec/94221"
+                },
+                {
                     "name": "Rene Mahnič",
                     "player_id": "89481",
                     "link": "https://www.kzs.si/igralec/89481"
@@ -5229,19 +5353,24 @@
                     "link": "https://www.kzs.si/igralec/79128"
                 },
                 {
+                    "name": "Matic Plantan",
+                    "player_id": "81866",
+                    "link": "https://www.kzs.si/igralec/81866"
+                },
+                {
                     "name": "Nik Poljšak",
                     "player_id": "84100",
                     "link": "https://www.kzs.si/igralec/84100"
                 },
                 {
-                    "name": "Mark Šantelj",
-                    "player_id": "92088",
-                    "link": "https://www.kzs.si/igralec/92088"
-                },
-                {
                     "name": "Tilen Šantelj",
                     "player_id": "84090",
                     "link": "https://www.kzs.si/igralec/84090"
+                },
+                {
+                    "name": "Mark Šantelj",
+                    "player_id": "92088",
+                    "link": "https://www.kzs.si/igralec/92088"
                 },
                 {
                     "name": "Tijan Sašić",
@@ -5686,6 +5815,31 @@
             "competition_id": "611",
             "players": [
                 {
+                    "name": "Lan Luka Cukor",
+                    "player_id": "84225",
+                    "link": "https://www.kzs.si/igralec/84225"
+                },
+                {
+                    "name": "Marcus Galli",
+                    "player_id": "85309",
+                    "link": "https://www.kzs.si/igralec/85309"
+                },
+                {
+                    "name": "Mark Ivanuša - Medjedovič",
+                    "player_id": "88766",
+                    "link": "https://www.kzs.si/igralec/88766"
+                },
+                {
+                    "name": "Marko Jan Juvan",
+                    "player_id": "83640",
+                    "link": "https://www.kzs.si/igralec/83640"
+                },
+                {
+                    "name": "Jon Kozorog",
+                    "player_id": "85490",
+                    "link": "https://www.kzs.si/igralec/85490"
+                },
+                {
                     "name": "Gaber Manfreda",
                     "player_id": "87222",
                     "link": "https://www.kzs.si/igralec/87222"
@@ -5694,6 +5848,46 @@
                     "name": "Domen Ščetinec",
                     "player_id": "89879",
                     "link": "https://www.kzs.si/igralec/89879"
+                },
+                {
+                    "name": "Simon Šimetić",
+                    "player_id": "87925",
+                    "link": "https://www.kzs.si/igralec/87925"
+                },
+                {
+                    "name": "Anže Štrakl",
+                    "player_id": "93629",
+                    "link": "https://www.kzs.si/igralec/93629"
+                },
+                {
+                    "name": "David Strušnik",
+                    "player_id": "85089",
+                    "link": "https://www.kzs.si/igralec/85089"
+                },
+                {
+                    "name": "Benjamin Tul",
+                    "player_id": "97822",
+                    "link": "https://www.kzs.si/igralec/97822"
+                },
+                {
+                    "name": "Jakob Virk",
+                    "player_id": "48172",
+                    "link": "https://www.kzs.si/igralec/48172"
+                },
+                {
+                    "name": "Andraž Vozel",
+                    "player_id": "89937",
+                    "link": "https://www.kzs.si/igralec/89937"
+                },
+                {
+                    "name": "Vito Vračko",
+                    "player_id": "83711",
+                    "link": "https://www.kzs.si/igralec/83711"
+                },
+                {
+                    "name": "Peter Vuković",
+                    "player_id": "53025",
+                    "link": "https://www.kzs.si/igralec/53025"
                 }
             ],
             "coach": {
