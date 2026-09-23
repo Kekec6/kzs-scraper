@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KZS prestopi – 23.09.2026 12:07</title>
+<style>
+
+  :root {
+    --bg: #f6f3ee;
+    --ink: #1c1917;
+    --muted: #57534e;
+    --accent: #0f766e;
+    --card: #fffdf9;
+    --line: #e7e5e4;
+    --warn: #9a3412;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    background:
+      radial-gradient(circle at top left, #dceeea 0%, transparent 40%),
+      linear-gradient(180deg, #f6f3ee, #efe8df);
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 0 0 0.35rem; letter-spacing: -0.02em; }
+  h2 { font-size: 1.15rem; margin: 1.4rem 0 0.6rem; color: var(--accent); }
+  .sub { color: var(--muted); margin-bottom: 1.25rem; }
+  a { color: var(--accent); }
+  a.player {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a.player:hover { color: #115e59; }
+  a.team {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a.team:hover { color: #115e59; }
+  .meta { color: var(--muted); font-size: 0.92em; }
+  .nav { margin-bottom: 1.25rem; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.9rem; }
+  .nav a { margin-right: 1rem; }
+  .badge {
+    display: inline-block;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #ccfbf1;
+    color: #115e59;
+    padding: 0.15rem 0.4rem;
+    margin-right: 0.35rem;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin: 1.25rem 0 2rem;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 0.9rem 1rem;
+  }
+  .stat b { display: block; font-size: 1.35rem; color: var(--accent); }
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1rem 1.1rem 0.4rem;
+    margin-bottom: 1rem;
+  }
+  section.warn { border-color: #fdba74; }
+  .filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+  .filters button {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.65rem;
+    border: 1px solid var(--line);
+    background: var(--card);
+    cursor: pointer;
+  }
+  .filters button.active { background: #ccfbf1; border-color: var(--accent); }
+  ul { padding-left: 1.1rem; margin: 0 0 1rem; }
+  li { margin: 0.45rem 0; }
+  .dry {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    padding: 0.6rem 0.8rem;
+    color: var(--warn);
+  }
+  footer { margin-top: 2rem; color: var(--muted); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="nav">
+    <a href="index.html">Domov</a>
+    <a href="spremembe.html">Spremembe</a>
+    <a href="iskanje.html">Iskanje</a>
+  </nav>
+  <h1>KZS – spremembe</h1>
+  <p class="sub">Generirano 23.09.2026 12:07</p>
+  
+  <div class="stats">
+    <div class="stat"><span>Ekipe</span><b>77</b></div>
+    <div class="stat"><span>Igralci</span><b>1144</b></div>
+    <div class="stat"><span>Spremembe</span><b>7</b></div>
+    <div class="stat"><span>Scrape napake</span><b>0</b></div>
+    <div class="stat"><span>Čas</span><b>439s</b></div>
+  </div>
+  <div class="filters" id="change-filters">
+    <button type="button" class="filter-btn active" data-filter="all">Vse</button><button type="button" class="filter-btn" data-filter="prestop">Prestopi</button><button type="button" class="filter-btn" data-filter="nov_igralec,nov_igralec_dvojna,dodatna_registracija">Novi / reg.</button><button type="button" class="filter-btn" data-filter="igralec_odsel">Odhodi</button><button type="button" class="filter-btn" data-filter="sprememba_trener,nov_trener_v_ekipo,trener_odsel_iz_ekipe">Trenerji</button>
+  </div>
+  
+  <div id="change-blocks">
+  <section class='change-block' data-filter='nov_igralec'><h2>Nov igralec (7)</h2><ul><li><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/90879" target="_blank" rel="noopener">Tomas Krajnc</a> → <a class="team" href="https://www.kzs.si/ekipa/18662?tekmovanje=609" target="_blank" rel="noopener" onclick="event.stopPropagation()">PORTOROŽ</a> <span class='meta'>(2. SKL moški)</span></li>
+<li><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/90878" target="_blank" rel="noopener">Jalen Oset</a> → <a class="team" href="https://www.kzs.si/ekipa/18662?tekmovanje=609" target="_blank" rel="noopener" onclick="event.stopPropagation()">PORTOROŽ</a> <span class='meta'>(2. SKL moški)</span></li>
+<li><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/90880" target="_blank" rel="noopener">Filip Petrović</a> → <a class="team" href="https://www.kzs.si/ekipa/18662?tekmovanje=609" target="_blank" rel="noopener" onclick="event.stopPropagation()">PORTOROŽ</a> <span class='meta'>(2. SKL moški)</span></li>
+<li><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/91923" target="_blank" rel="noopener">Jure Stanovnik</a> → <a class="team" href="https://www.kzs.si/ekipa/18662?tekmovanje=609" target="_blank" rel="noopener" onclick="event.stopPropagation()">PORTOROŽ</a> <span class='meta'>(2. SKL moški)</span></li>
+<li><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/90818" target="_blank" rel="noopener">Matija Popov</a> → <a class="team" href="https://www.kzs.si/ekipa/18674?tekmovanje=610" target="_blank" rel="noopener" onclick="event.stopPropagation()">MIKLAVŽ</a> <span class='meta'>(3. SKL moški)</span></li>
+<li><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/94042" target="_blank" rel="noopener">Matevž Majer</a> → <a class="team" href="https://www.kzs.si/ekipa/18700?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">JESENICE</a> <span class='meta'>(4. SKL moški)</span></li>
+<li><span class='badge'>Nov igralec</span> <a class="player" href="https://www.kzs.si/igralec/80145" target="_blank" rel="noopener">Marko Martič</a> → <a class="team" href="https://www.kzs.si/ekipa/18700?tekmovanje=611" target="_blank" rel="noopener" onclick="event.stopPropagation()">JESENICE</a> <span class='meta'>(4. SKL moški)</span></li></ul></section>
+  </div>
+  <footer>
+    <a href="spremembe.html">← Spremembe</a> · <a href="iskanje.html">Iskanje</a>
+  </footer>
+</main>
+<script>
+(function() {
+  const btns = document.querySelectorAll('#change-filters .filter-btn');
+  const blocks = document.querySelectorAll('.change-block');
+  btns.forEach(btn => btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const keys = (btn.getAttribute('data-filter') || 'all').split(',');
+    blocks.forEach(block => {
+      const t = block.getAttribute('data-filter');
+      block.style.display = (keys[0] === 'all' || keys.includes(t)) ? '' : 'none';
+    });
+  }));
+})();
+</script>
+</body>
+</html>

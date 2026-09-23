@@ -1,0 +1,30 @@
+{
+  "name": "KZS registracije",
+  "short_name": "KZS",
+  "description": "Zadnje registracije in prestopi v slovenski košarki",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f2f3f5",
+  "theme_color": "#17181c",
+  "lang": "sl",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
