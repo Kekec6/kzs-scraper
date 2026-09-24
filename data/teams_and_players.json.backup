@@ -528,7 +528,7 @@
                 }
             ],
             "coach": {
-                "name": "Filip Filipovski",
+                "name": "Jure Močnik",
                 "position": "Glavni trener"
             }
         },
@@ -621,103 +621,6 @@
             ],
             "coach": {
                 "name": "Domen Zevnik",
-                "position": "Glavni trener"
-            }
-        },
-        {
-            "name": "LAŠKO",
-            "link": "https://www.kzs.si/ekipa/18655?tekmovanje=608",
-            "team_id": "18655",
-            "competition_id": "608",
-            "players": [
-                {
-                    "name": "Mahmoud Bangura",
-                    "player_id": "108725",
-                    "link": "https://www.kzs.si/igralec/108725"
-                },
-                {
-                    "name": "Tijan Božić",
-                    "player_id": "86009",
-                    "link": "https://www.kzs.si/igralec/86009"
-                },
-                {
-                    "name": "Marko Čumić",
-                    "player_id": "94798",
-                    "link": "https://www.kzs.si/igralec/94798"
-                },
-                {
-                    "name": "Patrik Dorotić",
-                    "player_id": "108313",
-                    "link": "https://www.kzs.si/igralec/108313"
-                },
-                {
-                    "name": "Tim Goleš",
-                    "player_id": "97349",
-                    "link": "https://www.kzs.si/igralec/97349"
-                },
-                {
-                    "name": "Žak Tit Hlastec",
-                    "player_id": "85241",
-                    "link": "https://www.kzs.si/igralec/85241"
-                },
-                {
-                    "name": "Demarshay Antoine Johnson jr",
-                    "player_id": "108726",
-                    "link": "https://www.kzs.si/igralec/108726"
-                },
-                {
-                    "name": "Jaka Jovanović",
-                    "player_id": "87848",
-                    "link": "https://www.kzs.si/igralec/87848"
-                },
-                {
-                    "name": "Niko Maksimovič",
-                    "player_id": "92429",
-                    "link": "https://www.kzs.si/igralec/92429"
-                },
-                {
-                    "name": "Anid Pašić",
-                    "player_id": "87219",
-                    "link": "https://www.kzs.si/igralec/87219"
-                },
-                {
-                    "name": "Taij Pesjak",
-                    "player_id": "82557",
-                    "link": "https://www.kzs.si/igralec/82557"
-                },
-                {
-                    "name": "Erolt Rrahmani",
-                    "player_id": "87467",
-                    "link": "https://www.kzs.si/igralec/87467"
-                },
-                {
-                    "name": "Josip Santro",
-                    "player_id": "97951",
-                    "link": "https://www.kzs.si/igralec/97951"
-                },
-                {
-                    "name": "Artese L Stapelton",
-                    "player_id": "108778",
-                    "link": "https://www.kzs.si/igralec/108778"
-                },
-                {
-                    "name": "Luka Santiago Stojić",
-                    "player_id": "108672",
-                    "link": "https://www.kzs.si/igralec/108672"
-                },
-                {
-                    "name": "Žan Terbovc",
-                    "player_id": "90625",
-                    "link": "https://www.kzs.si/igralec/90625"
-                },
-                {
-                    "name": "Jakob Založnik",
-                    "player_id": "97283",
-                    "link": "https://www.kzs.si/igralec/97283"
-                }
-            ],
-            "coach": {
-                "name": "Hrvoje Radanovic",
                 "position": "Glavni trener"
             }
         },
@@ -896,6 +799,103 @@
                 }
             ],
             "coach": null
+        },
+        {
+            "name": "THERMANA LAŠKO",
+            "link": "https://www.kzs.si/ekipa/18655?tekmovanje=608",
+            "team_id": "18655",
+            "competition_id": "608",
+            "players": [
+                {
+                    "name": "Mahmoud Bangura",
+                    "player_id": "108725",
+                    "link": "https://www.kzs.si/igralec/108725"
+                },
+                {
+                    "name": "Tijan Božić",
+                    "player_id": "86009",
+                    "link": "https://www.kzs.si/igralec/86009"
+                },
+                {
+                    "name": "Marko Čumić",
+                    "player_id": "94798",
+                    "link": "https://www.kzs.si/igralec/94798"
+                },
+                {
+                    "name": "Patrik Dorotić",
+                    "player_id": "108313",
+                    "link": "https://www.kzs.si/igralec/108313"
+                },
+                {
+                    "name": "Tim Goleš",
+                    "player_id": "97349",
+                    "link": "https://www.kzs.si/igralec/97349"
+                },
+                {
+                    "name": "Žak Tit Hlastec",
+                    "player_id": "85241",
+                    "link": "https://www.kzs.si/igralec/85241"
+                },
+                {
+                    "name": "Demarshay Antoine Johnson jr",
+                    "player_id": "108726",
+                    "link": "https://www.kzs.si/igralec/108726"
+                },
+                {
+                    "name": "Jaka Jovanović",
+                    "player_id": "87848",
+                    "link": "https://www.kzs.si/igralec/87848"
+                },
+                {
+                    "name": "Niko Maksimovič",
+                    "player_id": "92429",
+                    "link": "https://www.kzs.si/igralec/92429"
+                },
+                {
+                    "name": "Anid Pašić",
+                    "player_id": "87219",
+                    "link": "https://www.kzs.si/igralec/87219"
+                },
+                {
+                    "name": "Taij Pesjak",
+                    "player_id": "82557",
+                    "link": "https://www.kzs.si/igralec/82557"
+                },
+                {
+                    "name": "Erolt Rrahmani",
+                    "player_id": "87467",
+                    "link": "https://www.kzs.si/igralec/87467"
+                },
+                {
+                    "name": "Josip Santro",
+                    "player_id": "97951",
+                    "link": "https://www.kzs.si/igralec/97951"
+                },
+                {
+                    "name": "Artese L Stapelton",
+                    "player_id": "108778",
+                    "link": "https://www.kzs.si/igralec/108778"
+                },
+                {
+                    "name": "Luka Santiago Stojić",
+                    "player_id": "108672",
+                    "link": "https://www.kzs.si/igralec/108672"
+                },
+                {
+                    "name": "Žan Terbovc",
+                    "player_id": "90625",
+                    "link": "https://www.kzs.si/igralec/90625"
+                },
+                {
+                    "name": "Jakob Založnik",
+                    "player_id": "97283",
+                    "link": "https://www.kzs.si/igralec/97283"
+                }
+            ],
+            "coach": {
+                "name": "Hrvoje Radanovic",
+                "position": "Glavni trener"
+            }
         },
         {
             "name": "ŠENTJUR",
@@ -1460,6 +1460,11 @@
                     "name": "Rok Popović",
                     "player_id": "82993",
                     "link": "https://www.kzs.si/igralec/82993"
+                },
+                {
+                    "name": "Radoslav Stanislavov Raykov",
+                    "player_id": "106707",
+                    "link": "https://www.kzs.si/igralec/106707"
                 },
                 {
                     "name": "Nik Trifunović",
@@ -2072,6 +2077,21 @@
                     "name": "Maks Smodiš",
                     "player_id": "87448",
                     "link": "https://www.kzs.si/igralec/87448"
+                },
+                {
+                    "name": "Marko Špoljar",
+                    "player_id": "89623",
+                    "link": "https://www.kzs.si/igralec/89623"
+                },
+                {
+                    "name": "Maj Strle",
+                    "player_id": "91200",
+                    "link": "https://www.kzs.si/igralec/91200"
+                },
+                {
+                    "name": "Jan Tomšič",
+                    "player_id": "104084",
+                    "link": "https://www.kzs.si/igralec/104084"
                 },
                 {
                     "name": "Igor Topić",
@@ -4359,7 +4379,10 @@
                     "link": "https://www.kzs.si/igralec/84076"
                 }
             ],
-            "coach": null
+            "coach": {
+                "name": "Peter Hartman",
+                "position": "Glavni trener"
+            }
         },
         {
             "name": "HIDRIA MLADI",

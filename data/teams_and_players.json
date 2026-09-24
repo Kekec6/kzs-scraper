@@ -162,6 +162,11 @@
                     "name": "Gašper Žiher",
                     "player_id": "94555",
                     "link": "https://www.kzs.si/igralec/94555"
+                },
+                {
+                    "name": "Ivo Zukanović",
+                    "player_id": "108769",
+                    "link": "https://www.kzs.si/igralec/108769"
                 }
             ],
             "coach": {
@@ -798,7 +803,10 @@
                     "link": "https://www.kzs.si/igralec/84168"
                 }
             ],
-            "coach": null
+            "coach": {
+                "name": "Damjan Novaković",
+                "position": "Glavni trener"
+            }
         },
         {
             "name": "THERMANA LAŠKO",
@@ -1809,14 +1817,14 @@
                     "link": "https://www.kzs.si/igralec/108821"
                 },
                 {
-                    "name": "Vito Stanovnik",
-                    "player_id": "82583",
-                    "link": "https://www.kzs.si/igralec/82583"
-                },
-                {
                     "name": "Jure Stanovnik",
                     "player_id": "91923",
                     "link": "https://www.kzs.si/igralec/91923"
+                },
+                {
+                    "name": "Vito Stanovnik",
+                    "player_id": "82583",
+                    "link": "https://www.kzs.si/igralec/82583"
                 },
                 {
                     "name": "Miha Stanovnik",
