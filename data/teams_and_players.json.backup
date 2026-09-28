@@ -1235,7 +1235,10 @@
                     "link": "https://www.kzs.si/igralec/78743"
                 }
             ],
-            "coach": null
+            "coach": {
+                "name": "Peter Hojč",
+                "position": "Glavni trener"
+            }
         },
         {
             "name": "HIDRIA",
@@ -1495,7 +1498,10 @@
                     "link": "https://www.kzs.si/igralec/86248"
                 }
             ],
-            "coach": null
+            "coach": {
+                "name": "Luka Trojanšek",
+                "position": "Glavni trener"
+            }
         },
         {
             "name": "KONJICE",
@@ -2021,7 +2027,7 @@
                     "link": "https://www.kzs.si/igralec/51652"
                 },
                 {
-                    "name": "Alan Topič Volovec",
+                    "name": "Alan Topić Volovec",
                     "player_id": "86141",
                     "link": "https://www.kzs.si/igralec/86141"
                 },
