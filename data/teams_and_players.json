@@ -1685,7 +1685,10 @@
                     "link": "https://www.kzs.si/igralec/87161"
                 }
             ],
-            "coach": null
+            "coach": {
+                "name": "Gašper Potočnik",
+                "position": "Glavni trener"
+            }
         },
         {
             "name": "LEONE AJDOVŠČINA",
@@ -6853,7 +6856,10 @@
                     "link": "https://www.kzs.si/igralec/81264"
                 }
             ],
-            "coach": null
+            "coach": {
+                "name": "Slavko Duščak",
+                "position": "Glavni trener"
+            }
         },
         {
             "name": "MARIBOR",
