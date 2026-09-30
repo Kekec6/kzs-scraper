@@ -4275,7 +4275,10 @@
                     "link": "https://www.kzs.si/igralec/97669"
                 }
             ],
-            "coach": null
+            "coach": {
+                "name": "Primož Rems",
+                "position": "Glavni trener"
+            }
         },
         {
             "name": "CERKNICA",
