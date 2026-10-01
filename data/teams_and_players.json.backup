@@ -5246,6 +5246,11 @@
                     "link": "https://www.kzs.si/igralec/87808"
                 },
                 {
+                    "name": "Miloš Komadina",
+                    "player_id": "93290",
+                    "link": "https://www.kzs.si/igralec/93290"
+                },
+                {
                     "name": "Nal Kovše",
                     "player_id": "86578",
                     "link": "https://www.kzs.si/igralec/86578"
@@ -5259,6 +5264,11 @@
                     "name": "Lovro Lončar Koražija",
                     "player_id": "87482",
                     "link": "https://www.kzs.si/igralec/87482"
+                },
+                {
+                    "name": "Tine Malec",
+                    "player_id": "88782",
+                    "link": "https://www.kzs.si/igralec/88782"
                 },
                 {
                     "name": "Maks Ogrizek",
