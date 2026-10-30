@@ -440,14 +440,14 @@
                     "link": "https://www.kzs.si/igralec/93295"
                 },
                 {
-                    "name": "Filip Razdevšek",
-                    "player_id": "82810",
-                    "link": "https://www.kzs.si/igralec/82810"
-                },
-                {
                     "name": "Luka Razdevšek",
                     "player_id": "93924",
                     "link": "https://www.kzs.si/igralec/93924"
+                },
+                {
+                    "name": "Filip Razdevšek",
+                    "player_id": "82810",
+                    "link": "https://www.kzs.si/igralec/82810"
                 },
                 {
                     "name": "Lovro Strnad",
@@ -1087,7 +1087,7 @@
                 }
             ],
             "coach": {
-                "name": "Aleksandar Ćikić",
+                "name": "Aleš Pipan",
                 "position": "Glavni trener"
             }
         },
@@ -4666,14 +4666,14 @@
                     "link": "https://www.kzs.si/igralec/50979"
                 },
                 {
-                    "name": "Rok Florjančič",
-                    "player_id": "100147",
-                    "link": "https://www.kzs.si/igralec/100147"
-                },
-                {
                     "name": "Jure Florjančič",
                     "player_id": "92989",
                     "link": "https://www.kzs.si/igralec/92989"
+                },
+                {
+                    "name": "Rok Florjančič",
+                    "player_id": "100147",
+                    "link": "https://www.kzs.si/igralec/100147"
                 },
                 {
                     "name": "Tine Gnezda",
@@ -4727,7 +4727,7 @@
                 }
             ],
             "coach": {
-                "name": "Aleš Kastrin",
+                "name": "Blaž Poljanec",
                 "position": "Glavni trener"
             }
         },
@@ -5090,7 +5090,7 @@
                 }
             ],
             "coach": {
-                "name": "Miha Krt",
+                "name": "Boris Završnik",
                 "position": "Glavni trener"
             }
         },
@@ -5473,14 +5473,14 @@
                     "link": "https://www.kzs.si/igralec/97318"
                 },
                 {
-                    "name": "Alej Kump",
-                    "player_id": "82711",
-                    "link": "https://www.kzs.si/igralec/82711"
-                },
-                {
                     "name": "Alex Kump",
                     "player_id": "97319",
                     "link": "https://www.kzs.si/igralec/97319"
+                },
+                {
+                    "name": "Alej Kump",
+                    "player_id": "82711",
+                    "link": "https://www.kzs.si/igralec/82711"
                 },
                 {
                     "name": "Adnan Kupinić",
@@ -5506,6 +5506,11 @@
                     "name": "Tadej Perko",
                     "player_id": "104076",
                     "link": "https://www.kzs.si/igralec/104076"
+                },
+                {
+                    "name": "Jure Persovšek",
+                    "player_id": "109003",
+                    "link": "https://www.kzs.si/igralec/109003"
                 },
                 {
                     "name": "Nej Rekić",
@@ -5846,6 +5851,11 @@
                     "link": "https://www.kzs.si/igralec/94453"
                 },
                 {
+                    "name": "Niko Kavaš",
+                    "player_id": "81769",
+                    "link": "https://www.kzs.si/igralec/81769"
+                },
+                {
                     "name": "Naj Natan Kovač",
                     "player_id": "92805",
                     "link": "https://www.kzs.si/igralec/92805"
@@ -5876,14 +5886,14 @@
                     "link": "https://www.kzs.si/igralec/97367"
                 },
                 {
-                    "name": "Jani Sever",
-                    "player_id": "88731",
-                    "link": "https://www.kzs.si/igralec/88731"
-                },
-                {
                     "name": "Pavel Sever",
                     "player_id": "92669",
                     "link": "https://www.kzs.si/igralec/92669"
+                },
+                {
+                    "name": "Jani Sever",
+                    "player_id": "88731",
+                    "link": "https://www.kzs.si/igralec/88731"
                 },
                 {
                     "name": "Maks Smodič",
@@ -6377,7 +6387,7 @@
                 }
             ],
             "coach": {
-                "name": "Luka Mavrič",
+                "name": "Jaka Zupan",
                 "position": "Glavni trener"
             }
         },
@@ -6551,6 +6561,11 @@
             "team_id": "19326",
             "competition_id": "611",
             "players": [
+                {
+                    "name": "Andraž Čander",
+                    "player_id": "86442",
+                    "link": "https://www.kzs.si/igralec/86442"
+                },
                 {
                     "name": "Lan Luka Cukor",
                     "player_id": "84225",
