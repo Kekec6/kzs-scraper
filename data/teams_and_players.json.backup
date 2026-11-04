@@ -4622,6 +4622,11 @@
                     "link": "https://www.kzs.si/igralec/49983"
                 },
                 {
+                    "name": "Lazar Tanasijevič",
+                    "player_id": "81688",
+                    "link": "https://www.kzs.si/igralec/81688"
+                },
+                {
                     "name": "Taj Žmitek Pravst",
                     "player_id": "100380",
                     "link": "https://www.kzs.si/igralec/100380"
@@ -5440,6 +5445,11 @@
             "competition_id": "611",
             "players": [
                 {
+                    "name": "Bor Brečko",
+                    "player_id": "94322",
+                    "link": "https://www.kzs.si/igralec/94322"
+                },
+                {
                     "name": "Luka Bubulj",
                     "player_id": "92454",
                     "link": "https://www.kzs.si/igralec/92454"
@@ -5493,6 +5503,11 @@
                     "name": "Maks Ogrizek",
                     "player_id": "97326",
                     "link": "https://www.kzs.si/igralec/97326"
+                },
+                {
+                    "name": "Tibor Oković",
+                    "player_id": "94517",
+                    "link": "https://www.kzs.si/igralec/94517"
                 },
                 {
                     "name": "Jaša Oković",
@@ -6641,6 +6656,11 @@
                     "link": "https://www.kzs.si/igralec/55520"
                 },
                 {
+                    "name": "Boris Kovačić",
+                    "player_id": "52133",
+                    "link": "https://www.kzs.si/igralec/52133"
+                },
+                {
                     "name": "Ožbej Leskošek",
                     "player_id": "81749",
                     "link": "https://www.kzs.si/igralec/81749"
@@ -6674,6 +6694,11 @@
                     "name": "Rene Ramšak",
                     "player_id": "89628",
                     "link": "https://www.kzs.si/igralec/89628"
+                },
+                {
+                    "name": "Žan Skok",
+                    "player_id": "105413",
+                    "link": "https://www.kzs.si/igralec/105413"
                 },
                 {
                     "name": "Ahmed Valentić",
